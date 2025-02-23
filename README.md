@@ -4,4 +4,4 @@
 
 ## Instalation
 
-`cd ~/.config && git clone https://github.com/flebedev77/dotfiles.git . && ./post_inst.sh`
+`cd ~/.config && git clone https://github.com/flebedev77/dotfiles.git . --depth=1 && ./post_inst.sh`
