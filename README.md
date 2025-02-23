@@ -4,4 +4,4 @@
 
 ## Instalation
 
-You can copy and paste this command `cd ; git clone https://github.com/flebedev77/dotfiles.git dotfiles; cd dotfiles; ./install.sh`
+`cd ~/.config && git clone https://github.com/flebedev77/dotfiles.git . && ./post_inst.sh`
