@@ -35,7 +35,7 @@ map("n", "<C-p>", "<leader>ff")
 map("n", "s", ":w<CR>")
 
 -- Running
-map("n", "<F5>", ":!odin run . -debug<CR>")
+map("n", "<F4>", ":!cd build; cmake ..; make && ./vbrowser<CR>")
 
 map("n", "<C-c>", "<Esc>")
 

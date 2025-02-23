@@ -64,9 +64,11 @@ end
 beautiful.init(gears.filesystem.get_configuration_dir() .. "theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "konsole"
+terminal = "/home/debian/.local/bin/kitty"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
+file_browser = "nemo"
+rofi_path = "/home/debian/.local/bin/rofi"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -315,7 +317,8 @@ globalkeys = gears.table.join(
 		awful.client.focus.byidx(-1)
 	end, { description = "focus previous by index", group = "client" }),
 	awful.key({ modkey }, "w", function()
-		mymainmenu:show()
+		-- mymainmenu:show()
+		awful.util.spawn(rofi_path .. " -show window")
 	end, { description = "show main menu", group = "awesome" }),
 
 	-- Layout manipulation
@@ -382,7 +385,7 @@ globalkeys = gears.table.join(
 	-- Prompt
 	awful.key({ modkey }, "r", function()
 		--awful.screen.focused().mypromptbox:run()
-		awful.util.spawn("dmenu_run")
+		awful.util.spawn(rofi_path .. " -show drun")
 	end, { description = "run prompt", group = "launcher" }),
 
 	-- Firefox
@@ -390,6 +393,12 @@ globalkeys = gears.table.join(
 		--awful.screen.focused().mypromptbox:run()
 		awful.util.spawn("firefox-esr")
 	end, { description = "open firefox", group = "launcher" }),
+
+	-- File browser
+	awful.key({ modkey }, "e", function()
+		--awful.screen.focused().mypromptbox:run()
+		awful.util.spawn(file_browser)
+	end, { description = "open " .. file_browser, group = "launcher" }),
 
 	-- Shutdown
 	awful.key({ modkey, "Control" }, "Delete", function() end, { description = "shutdown", group = "launcher" }),
@@ -616,30 +625,40 @@ client.connect_signal("request::titlebars", function(c)
 	)
 
 	-- No more title bar
-	-- awful.titlebar(c):setup({
-	-- 	{ -- Left
-	-- 		awful.titlebar.widget.iconwidget(c),
-	-- 		buttons = buttons,
-	-- 		layout = wibox.layout.fixed.horizontal,
-	-- 	},
-	-- 	{ -- Middle
-	-- 		{ -- Title
-	-- 			align = "center",
-	-- 			widget = awful.titlebar.widget.titlewidget(c),
-	-- 		},
-	-- 		buttons = buttons,
-	-- 		layout = wibox.layout.flex.horizontal,
-	-- 	},
-	-- 	{ -- Right
-	-- 		awful.titlebar.widget.floatingbutton(c),
-	-- 		awful.titlebar.widget.maximizedbutton(c),
-	-- 		awful.titlebar.widget.stickybutton(c),
-	-- 		awful.titlebar.widget.ontopbutton(c),
-	-- 		awful.titlebar.widget.closebutton(c),
-	-- 		layout = wibox.layout.fixed.horizontal(),
-	-- 	},
-	-- 	layout = wibox.layout.align.horizontal,
-	-- })
+	awful.titlebar(c):setup({
+		{ -- Left
+			awful.titlebar.widget.iconwidget(c),
+			buttons = buttons,
+			layout = wibox.layout.fixed.horizontal,
+		},
+		{ -- Middle
+			{ -- Title
+				align = "center",
+				widget = awful.titlebar.widget.titlewidget(c),
+			},
+			buttons = buttons,
+			layout = wibox.layout.flex.horizontal,
+		},
+		{ -- Right
+			-- awful.titlebar.widget.floatingbutton(c),
+			-- awful.titlebar.widget.maximizedbutton(c),
+			-- awful.titlebar.widget.stickybutton(c),
+			-- awful.titlebar.widget.ontopbutton(c),
+			-- awful.titlebar.widget.closebutton(c),
+			layout = wibox.layout.fixed.horizontal(),
+		},
+		layout = wibox.layout.align.horizontal,
+	})
+
+	awful.titlebar.hide(c)
+end)
+
+client.connect_signal("property::floating", function(c)
+	if c.floating then
+		awful.titlebar.show(c)
+	else
+		awful.titlebar.hide(c)
+	end
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.

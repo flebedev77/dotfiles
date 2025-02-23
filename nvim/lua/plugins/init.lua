@@ -7,6 +7,8 @@ Plug "ThePrimeagen/vim-be-good"
 
 Plug "nvim-treesitter/nvim-treesitter"
 
+Plug "AndrewRadev/splitjoin.vim"
+
 vim.call "plug#end"
 
 vim.api.nvim_create_autocmd("BufWritePre", {

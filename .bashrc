@@ -100,6 +100,16 @@ alias vi='vim'
 alias apt='nala'
 alias sudo='sudo '
 
+alias vimawesome="cd ~/dotfiles/.config/awesome && nvim"
+alias vimvim="cd ~/dotfiles/.config/nvim && nvim"
+alias vimkitty="cd ~/.config/kitty && nvim"
+alias vimrofi="cd ~/.config/rofi && nvim"
+alias vimi3="cd ~/.config/i3 && nvim config"
+alias vimpolybar="cd ~/.config/polybar && nvim config.ini"
+
+alias vimproject="cd ~/programming/c/vimium-browser/ && nvim src/application.c"
+alias vimrwp="cd ~/programming/rust/rwp/ && nvim"
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -131,6 +141,12 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 export PATH="$PATH:/opt/nvim-linux64/bin"
 . "$HOME/.cargo/env"
-. "/home/debian/.deno/env"
-export PATH="/home/debian/programming/odin/compiler:$PATH"
-export PATH="/home/debian/programming/odin/lsp-ols:$PATH"
+. "$HOME/.deno/env"
+export PATH="$HOME/programming/odin/compiler:$PATH"
+export PATH="$HOME/programming/odin/lsp-ols:$PATH"
+export PATH="$HOME/Documents/arduino-ide_2.3.3_Linux_64bit:$PATH"
+export PATH="$HOME/.local/bin/:$PATH"
+export PATH="$HOME/programming/tools/jdk-9.0.1/bin/:$PATH"
+
+
+export EDITOR="nvim"

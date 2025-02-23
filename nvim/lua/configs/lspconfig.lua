@@ -32,3 +32,5 @@ lspconfig.ts_ls.setup {
 lspconfig.tailwindcss.setup {}
 
 lspconfig.ols.setup {}
+
+lspconfig.rust_analyzer.setup {}
