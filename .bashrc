@@ -109,6 +109,7 @@ alias vimpolybar="cd ~/.config/polybar && nvim config.ini"
 
 alias vimproject="cd ~/programming/c/vimium-browser/ && nvim src/application.c"
 alias vimrwp="cd ~/programming/rust/rwp/ && nvim"
+alias cdclip="cd $(pbpaste)"
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -146,7 +147,17 @@ export PATH="$HOME/programming/odin/compiler:$PATH"
 export PATH="$HOME/programming/odin/lsp-ols:$PATH"
 export PATH="$HOME/Documents/arduino-ide_2.3.3_Linux_64bit:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
-export PATH="$HOME/programming/tools/jdk-9.0.1/bin/:$PATH"
+export PATH="$HOME/programming/tools/jdk-12.0.1/bin/:$PATH"
+# Android
+export PATH="$HOME/Android/Sdk/platform-tools/:$PATH"
+export PATH="$HOME/Android/Sdk/build-tools/35.0.0/:$PATH"
+export ANDROID_SDK_HOME="$HOME/Android/android-tools"
+export PATH="$ANDROID_SDK_HOME/cmdline-tools/latest/bin:$PATH"
+export ANDROID_NDK_HOME="$HOME/Android/android-ndk/android-ndk-r27c"
+export PATH="$ANDROID_NDK_HOME:$PATH"
+
+
+
 
 
 export EDITOR="nvim"
