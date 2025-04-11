@@ -5,38 +5,14 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
-map("i", "jk", "<ESC>")
-
--- Visual mode up an down
-map("v", "J", ":m '>+1<CR>gv=gv")
-map("v", "K", ":m '<-2<CR>gv=gv")
-
--- Fix J cursor from going to the end of the line
-map("n", "J", "mzJ`z")
-
--- Half page up down center cursor
-map("n", "<C-u>", "<C-u>zz")
-map("n", "<C-d>", "<C-d>zz")
-
--- Search terms in the middle
-map("n", "n", "nzzzv")
-map("n", "N", "Nzzzv")
-
--- Fix pasting
-map("x", "p", '"_dP')
-
--- Yanking to system clipboard
-map("v", "<leader>y", '"+y')
-
--- Telescope
-map("n", "<C-p>", "<leader>ff")
-
--- Saving
-map("n", "s", ":w<CR>")
-
--- Running
-map("n", "<F4>", ":!cd build; cmake ..; make && ./vbrowser<CR>")
-
-map("n", "<C-c>", "<Esc>")
-
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move current selected code down" })
+map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move current selected code up" })
+map("n", "J", "mzJ`z", { desc = "When pressing J make sure the view dosen't move" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Center the view when going up"})
+map("n", "<C-d>", "<C-d>zz", { desc = "Center the view when going down"})
+map("n", "n", "nzzzv", { desc = "Center the view when searching" })
+map("n", "N", "Nzzzv", { desc = "Center the view when searching" })
+map("x", "p", '"_dP', { desc = "Fix paste buffer when pasting over something"})
+map("v", "<leader>y", '"+y', { desc = "Copy into system clipboard"})
+map("n", "<C-c>", "<Esc>", { desc = "Make sure they are the same"})
+map("n", "s", "d$o<Esc>p", { desc = "Split line at cursor in half" })
