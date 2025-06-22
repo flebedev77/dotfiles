@@ -2,6 +2,5 @@
 
 > **Warning**: Installing will delete current config files, make sure they are backed up
 
-## Instalation
-
-`cd ~/.config && git clone https://github.com/flebedev77/dotfiles.git . --depth=1 && ./post_inst.sh`
+To install run `install.sh`
+To save your own dotfiles run `pull_from_local.sh`
