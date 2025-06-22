@@ -8,7 +8,13 @@ printf "\nContinue? [y/N]: "
 read CONTINUE
 
 if [[ $CONTINUE == *Y* || $CONTINUE == *y* ]]; then
+  rm -rf ~/.config/nvim
+  rm -rf ~/.local/state/nvim
+  rm -rf ~/.local/share/nvim
+
   cp -rv "$SCRIPT_DIR"/* "$CONFIG_PATH/"
+
+  "$CONFIG_PATH/nvim/install.sh" "$SCRIPT_DIR/nvim/mappings.lua"
 
   pushd $CONFIG_PATH 2> /dev/null
   rm -rf install.sh .git .gitmodules pull_from_local.sh README.md
