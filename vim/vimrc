@@ -41,6 +41,9 @@ set gp=git\ grep\ -n
 set fillchars=vert:\│,fold:\-,eob:\~,lastline:\@
 highlight VertSplit ctermfg=white ctermbg=NONE guifg=#444444 guibg=NONE
 
+" Set background color
+highlight Normal ctermbg=NONE guibg=NONE  " Replace with your desired color
+
 nnoremap <C-w>v <C-w>v<C-w>w
 
 " Move current selected code down

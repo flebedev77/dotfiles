@@ -19,6 +19,8 @@ config.colors = {
   cursor_bg = "#d2d9ef",     -- Cursor fill color
   cursor_fg = "#111111",     -- Text color under cursor
   cursor_border = "#d2d9ef", -- Cursor border color
+  --background = "#1c1c1c", -- Vim habamax background color
+  background = "#252628",
 }
 
 return config
