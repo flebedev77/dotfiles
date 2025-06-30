@@ -11,8 +11,11 @@ if [[ $CONTINUE == *Y* || $CONTINUE == *y* ]]; then
   rm -rf ~/.config/nvim
   rm -rf ~/.local/state/nvim
   rm -rf ~/.local/share/nvim
+  cp -v "$SCRIPT_DIR/vim/vimrc" "$HOME/.vimrc"
 
   cp -rv "$SCRIPT_DIR"/* "$CONFIG_PATH/"
+
+  rm -rv "$CONFIG_PATH/vim"
 
   "$CONFIG_PATH/nvim/install.sh" "$SCRIPT_DIR/nvim/mappings.lua"
 

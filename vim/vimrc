@@ -1,0 +1,67 @@
+" All system-wide defaults are set in $VIMRUNTIME/archlinux.vim (usually just
+" /usr/share/vim/vimfiles/archlinux.vim) and sourced by the call to :runtime
+" you can find below.  If you wish to change any of those settings, you should
+" do it in this file (/etc/vimrc), since archlinux.vim will be overwritten
+" everytime an upgrade of the vim packages is performed.  It is recommended to
+" make changes after sourcing archlinux.vim since it alters the value of the
+" 'compatible' option.
+
+" This line should not be removed as it ensures that various options are
+" properly set to work with the Vim-related packages.
+"runtime! archlinux.vim
+
+" If you prefer the old-style vim functionalty, add 'runtime! vimrc_example.vim'
+" Or better yet, read /usr/share/vim/vim80/vimrc_example.vim or the vim manual
+" and configure vim to your own liking!
+
+" do not load defaults if ~/.vimrc is missing
+"let skip_defaults_vim=1
+
+set relativenumber
+set number
+set smartcase
+syntax on
+color habamax
+set termguicolors
+"color default
+" Set cursor to be slim in insert mode
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
+" Set tab settings
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+set complete+=kspell
+set completeopt=menu,menuone
+
+set gp=git\ grep\ -n
+
+set fillchars=vert:\│,fold:\-,eob:\~,lastline:\@
+highlight VertSplit ctermfg=white ctermbg=NONE guifg=#444444 guibg=NONE
+
+nnoremap <C-w>v <C-w>v<C-w>w
+
+" Move current selected code down
+vnoremap J :m '>+1<CR>gv=gv<CR>
+" Move current selected code up
+vnoremap K :m '<-2<CR>gv=gv<CR>
+" When pressing J make sure the view doesn't move
+nnoremap J mzJ`z
+" Center the view when going up
+nnoremap <C-u> <C-u>zz
+" Center the view when going down
+nnoremap <C-d> <C-d>zz
+" Center the view when searching (next)
+nnoremap n nzzzv
+" Center the view when searching (previous)
+nnoremap N Nzzzv
+" Fix paste buffer when pasting over something
+xnoremap p "_dP
+" Copy into system clipboard
+vnoremap <space>y "+y
+" Make sure they are the same
+nnoremap <C-c> <Esc>
+" Split line at cursor in half
+nnoremap s d$o<Esc>p
