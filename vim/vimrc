@@ -16,6 +16,7 @@
 
 " do not load defaults if ~/.vimrc is missing
 "let skip_defaults_vim=1
+let mapleader = "\<Space>"
 
 set relativenumber
 set number
@@ -68,3 +69,31 @@ vnoremap <space>y "+y
 nnoremap <C-c> <Esc>
 " Split line at cursor in half
 nnoremap s d$o<Esc>p
+
+
+" Function to toggle the directory listing
+function! ToggleDirList()
+    if exists("t:dirlist_open") && t:dirlist_open
+        " If the directory list is open, close it
+        :bdelete
+        unlet t:dirlist_open
+    else
+        " If the directory list is not open, open it
+        :E
+        let t:dirlist_open = 1
+    endif
+endfunction
+
+" Map Ctrl-n to the toggle function
+nnoremap <C-n> :call ToggleDirList()<CR>:<CR>
+
+nnoremap <leader>f :Files<CR>
+
+call plug#begin('~/.vim/plugged')
+
+" FZF plugin
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+call plug#end()
+
